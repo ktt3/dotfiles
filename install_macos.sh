@@ -16,7 +16,7 @@ homedir=$1
 dotfiledir=${homedir}/dotfiles
 
 # list of files/folders to symlink in ${homedir}
-files="bash_profile bashrc bash_prompt aliases private"
+files="bash_profile zshrc agnoster_profile omzsh_profile"
 
 # change to the dotfiles directory
 echo "Changing to the ${dotfiledir} directory"
@@ -28,12 +28,17 @@ for file in ${files}; do
     echo "Creating symlink to $file in home directory."
     ln -sf ${dotfiledir}/.${file} ${homedir}/.${file}
 done
+ls
 
-# Download Git Auto-Completion
-curl "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash" > ${homedir}/.git-completion.bash
+# Install xcode and brew
+# xcode-select --install
+# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Run the Homebrew Script
-./brew.sh
+# ./brew.sh
 
-# Run the Sublime Script
-./sublime.sh
+# Add settings for neofetch
+cp settings/config.conf ${homedir}/.config/neofetch
+
+# Upload settings for iterm2
+cp settings/com.googlecode.iterm2.plist ${homedir}/Library/Preferences

@@ -16,3 +16,11 @@ Thumbs.db
 # Private Information
 .private
 .gitconfig
+
+# Compiled C++ files
+*.out
+
+# Application specific files
+venv
+node_modules
+.sass-cache
